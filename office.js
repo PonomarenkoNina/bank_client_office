@@ -37,7 +37,9 @@ function customerDatabase() {
     }
   }
   //Перевірка логіну та паролю
-  if (!isValidClient) {
+  if (!loginInput || !passwordInput) {
+    alert("Введіть логін та пароль!");
+  } else if (!isValidClient) {
     alert("Ви ввели неправильний пароль або логін!");
   }
 }
@@ -58,11 +60,14 @@ function showPersonalPage(client) {
   document.getElementById("cardBalance").innerText =
     "Баланс на картці: " + client.cardKredobank.balance;
 
-  // Додавання обробника подій для кнопки "Вийти"
+  //Обробник подій для кнопки "Вийти"
   document
     .getElementById("logoutButton")
     .addEventListener("click", function () {
-      window.location.href = "office_1.html"; // Перенаправлення на сторінку 1
+      window.location.href = "office_1.html"; //Перенаправлення на сторінку 1
     });
 }
-document.getElementById("myButton").addEventListener("click", customerDatabase);
+//Oбробник події для кнопки "Вхід"
+document
+  .getElementById("loginButton")
+  .addEventListener("click", customerDatabase);
