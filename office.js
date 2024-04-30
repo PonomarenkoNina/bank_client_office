@@ -67,7 +67,7 @@ function showPersonalPage(client) {
       window.location.href = "office_1.html"; //Перенаправлення на сторінку 1
     });
 }
-//Oбробник події для кнопки "Вхід"
+//Oбробник подій для кнопки "Вхід"
 document
   .getElementById("loginButton")
   .addEventListener("click", customerDatabase);
