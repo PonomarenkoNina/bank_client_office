@@ -1,7 +1,8 @@
 var clients = [
   {
     name: "Volodymyr Parkhomenko",
-    surname: "Olegovich",
+    surname: "Parkhomenko",
+    patronymic: "Olegovich",
     login: "+380671234567",
     password: "Volod123",
     cardKredobank: {
@@ -10,8 +11,9 @@ var clients = [
     },
   },
   {
-    name: "Olga Musaeva",
-    surname: "Volodymyrivna",
+    name: "Olga",
+    surname: "Musaeva",
+    patronymic: "Volodymyrivna",
     login: "+380677654321",
     password: "Olga1234",
     cardKredobank: {
@@ -20,6 +22,7 @@ var clients = [
     },
   },
 ];
+
 //Викликаємо функцію бази даних клієнтів
 function customerDatabase() {
   var loginInput = document.getElementById("loginInput").value;
@@ -32,7 +35,6 @@ function customerDatabase() {
       clients[i].password === passwordInput
     ) {
       isValidClient = true;
-      window.location.href = "office_2.html"; // Перенаправлення на сторінку 2
       break;
     }
   }
@@ -41,24 +43,22 @@ function customerDatabase() {
     alert("Введіть логін та пароль!");
   } else if (!isValidClient) {
     alert("Ви ввели неправильний пароль або логін!");
+  } else {
+    window.location.href = "office_2.html"; // Перенаправлення на сторінку 2
   }
 }
+
 function showPersonalPage(client) {
   // Відображення інформації про клієнта на сторінці особистого кабінету
   document.getElementById("header").innerHTML =
-    "<h1 class='title'>Ласкаво просимо, " +
+    "<h1 class='title'>ЛАСКАВО ПРОСИМО, " +
     client.surname +
     " " +
     client.name +
     " " +
     client.patronymic +
     "</h1>" +
-    "<button class='btn btn-danger' id='logoutButton'>Вийти</button>";
-
-  document.getElementById("cardNumber").innerText =
-    "Номер картки: " + client.cardKredobank.number;
-  document.getElementById("cardBalance").innerText =
-    "Баланс на картці: " + client.cardKredobank.balance;
+    "<button id=logoutButton class='btn btn-primary'>Вийти</button>";
 
   //Обробник подій для кнопки "Вийти"
   document
@@ -66,8 +66,15 @@ function showPersonalPage(client) {
     .addEventListener("click", function () {
       window.location.href = "office_1.html"; //Перенаправлення на сторінку 1
     });
+
+  document.getElementById("cardNumber").innerText =
+    "Номер картки: " + client.cardKredobank.number;
+  document.getElementById("cardBalance").innerText =
+    "Баланс на картці: " + client.cardKredobank.balance;
 }
+
 //Oбробник подій для кнопки "Вхід"
+console.log("Adding event listener to login button");
 document
   .getElementById("loginButton")
   .addEventListener("click", customerDatabase);
