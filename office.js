@@ -1,3 +1,11 @@
+document.addEventListener("DOMContentLoaded", function () {
+  // Тут ви можете отримати доступ до елементів DOM та встановити обробники подій
+  var loginButton = document.getElementById("loginButton");
+  if (loginButton) {
+    loginButton.addEventListener("click", customerDatabase);
+  }
+});
+
 var clients = [
   {
     name: "Volodymyr Parkhomenko",
@@ -58,7 +66,7 @@ function showPersonalPage(client) {
     " " +
     client.patronymic +
     "</h1>" +
-    "<button id=logoutButton class='btn btn-primary'>Вийти</button>";
+    "<button id='logoutButton' class='btn btn-primary'>Вийти</button>";
 
   //Обробник подій для кнопки "Вийти"
   document
@@ -72,9 +80,3 @@ function showPersonalPage(client) {
   document.getElementById("cardBalance").innerText =
     "Баланс на картці: " + client.cardKredobank.balance;
 }
-
-//Oбробник подій для кнопки "Вхід"
-console.log("Adding event listener to login button");
-document
-  .getElementById("loginButton")
-  .addEventListener("click", customerDatabase);
