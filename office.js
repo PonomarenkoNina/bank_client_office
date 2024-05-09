@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Тут ви можете отримати доступ до елементів DOM та встановити обробники подій
+  //Доступ до елементів DOM та встановлення обробник подій "Вхід"
   var loginButton = document.getElementById("loginButton");
   if (loginButton) {
     loginButton.addEventListener("click", customerDatabase);
@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 var clients = [
   {
-    name: "Volodymyr Parkhomenko",
+    name: "Volodymyr",
     surname: "Parkhomenko",
     patronymic: "Olegovich",
     login: "+380671234567",
