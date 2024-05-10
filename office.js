@@ -56,8 +56,18 @@ function customerDatabase() {
   }
 }
 
+//Обробник подій для кнопки "Вийти"
+document.addEventListener("DOMContentLoaded", function () {
+  var logoutButton = document.getElementById("logoutButton");
+  if (logoutButton) {
+    logoutButton.addEventListener("click", function () {
+      window.location.href = "office_1.html"; // Перенаправлення на сторінку логіна
+    });
+  }
+});
+
 function showPersonalPage(client) {
-  // Відображення інформації про клієнта на сторінці особистого кабінету
+  //Відображення інформації про клієнта на сторінці особистого кабінету
   document.getElementById("header").innerHTML =
     "<h1 class='title'>ЛАСКАВО ПРОСИМО, " +
     client.surname +
@@ -67,13 +77,6 @@ function showPersonalPage(client) {
     client.patronymic +
     "</h1>" +
     "<button id='logoutButton' class='btn btn-primary'>Вийти</button>";
-
-  //Обробник подій для кнопки "Вийти"
-  document
-    .getElementById("logoutButton")
-    .addEventListener("click", function () {
-      window.location.href = "office_1.html"; //Перенаправлення на сторінку 1
-    });
 
   document.getElementById("cardNumber").innerText =
     "Номер картки: " + client.cardKredobank.number;
